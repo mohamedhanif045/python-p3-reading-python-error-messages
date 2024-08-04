@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import runpy
+import pytest
 
 class TestNameError:
     '''
@@ -9,10 +10,10 @@ class TestNameError:
 
     def test_name_error(self):
         '''
-        contains defined name "hello_world"
+        Contains defined name "hello_world"
         '''
-
-        runpy.run_path('lib/a_name_error.py')
+        with pytest.raises(NameError):
+            runpy.run_path('lib/a_name_error.py')
 
 class TestSyntaxError:
     '''
@@ -21,10 +22,10 @@ class TestSyntaxError:
 
     def test_syntax_error(self):
         '''
-        multiplies two numbers
+        Multiplies two numbers
         '''
-        
-        runpy.run_path('lib/a_syntax_error.py')
+        with pytest.raises(SyntaxError):
+            runpy.run_path('lib/a_syntax_error.py')
 
 class TestTypeError:
     '''
@@ -33,10 +34,10 @@ class TestTypeError:
 
     def test_type_error(self):
         '''
-        adds two numbers
+        Adds two numbers
         '''
-        
-        runpy.run_path('lib/a_type_error.py')
+        with pytest.raises(TypeError):
+            runpy.run_path('lib/a_type_error.py')
 
 class TestAssertionError:
     '''
@@ -45,7 +46,7 @@ class TestAssertionError:
 
     def test_assertion_error(self):
         '''
-        evaluates two equal values
+        Evaluates two equal values
         '''
-        
-        runpy.run_path('lib/an_assertion_error.py')
+        with pytest.raises(AssertionError):
+            runpy.run_path('lib/an_assertion_error.py')
